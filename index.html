@@ -84,6 +84,27 @@
       border-radius: 50%;
       font-size: 14px;
       letter-spacing: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .brand-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-logo-fallback {
+      display: none;
+    }
+
+    .brand-mark.logo-missing .brand-logo {
+      display: none;
+    }
+
+    .brand-mark.logo-missing .brand-logo-fallback {
+      display: block;
     }
 
     .nav-links {
@@ -1700,6 +1721,54 @@
       font-size: 14px;
     }
 
+    .payment-card {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(255, 248, 231, .94);
+      color: var(--ink);
+    }
+
+    .payment-card h4 {
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: var(--cinnabar);
+    }
+
+    .payment-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(34, 22, 15, .1);
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .payment-row:last-of-type {
+      border-bottom: 0;
+    }
+
+    .payment-row strong {
+      color: var(--ink);
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .payment-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .payment-card .btn {
+      margin-top: 0;
+      width: 100%;
+      justify-content: center;
+      font-size: 14px;
+    }
+
     .faq-item {
       padding: 22px;
       box-shadow: none;
@@ -1711,11 +1780,124 @@
     }
 
     .footer {
-      padding: 34px 6vw 92px;
+      padding: 18px 6vw 22px;
       background: #160f0a;
       color: rgba(255, 248, 231, .72);
       text-align: center;
       font-size: 14px;
+    }
+
+    .footer p {
+      margin: 4px 0;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .footer-social.ig {
+      background: #d83d78;
+    }
+
+    .footer-social.fb {
+      background: #1877f2;
+    }
+
+    .footer-social.line {
+      background: #06c755;
+    }
+
+    .line-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 34;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: #06c755;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(6, 199, 85, .32);
+    }
+
+    .line-float span {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .order-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(22, 15, 10, .64);
+    }
+
+    .order-modal.visible {
+      display: flex;
+    }
+
+    .order-dialog {
+      width: min(100%, 560px);
+      max-height: calc(100vh - 40px);
+      overflow: auto;
+      padding: 28px;
+      border-radius: 8px;
+      background: #fffaf0;
+      color: var(--ink);
+      box-shadow: 0 24px 58px rgba(0, 0, 0, .28);
+    }
+
+    .order-dialog h3 {
+      margin-bottom: 10px;
+      color: var(--cinnabar);
+      font-size: 28px;
+    }
+
+    .order-complete-summary {
+      margin: 16px 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink-soft);
+      white-space: pre-line;
+    }
+
+    .modal-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .modal-actions .btn {
+      justify-content: center;
+      text-align: center;
     }
 
     .mobile-cta {
@@ -2174,6 +2356,32 @@
         grid-column: 2;
       }
 
+      .payment-row {
+        display: grid;
+        gap: 2px;
+      }
+
+      .payment-row strong {
+        text-align: left;
+      }
+
+      .line-float {
+        right: 14px;
+        bottom: 14px;
+        min-height: 50px;
+        padding: 0 18px;
+      }
+
+      .footer-socials,
+      .modal-actions {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .order-dialog {
+        padding: 22px;
+      }
+
       .mobile-cta.visible {
         display: none;
       }
@@ -2183,7 +2391,10 @@
 <body>
   <nav class="site-nav" aria-label="主要導覽">
     <a class="brand" href="#top" aria-label="回到首頁">
-      <span class="brand-mark">昌</span>
+      <span class="brand-mark">
+        <img class="brand-logo" src="assets/logo.png" alt="" onerror="this.parentElement.classList.add('logo-missing')">
+        <span class="brand-logo-fallback">昌</span>
+      </span>
       <span>昌久貹｜補財補庫</span>
     </a>
     <div class="nav-links">
@@ -2552,6 +2763,40 @@
       </div>
     </section>
 
+
+    <section class="section alt" id="faq">
+      <div class="section-head">
+        <div class="section-kicker">常見問題</div>
+        <h2>常見疑問</h2>
+      </div>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>多久補一次比較好？</h3>
+          <p>可依個人信仰與需求安排 常見做法是新年、生日、農曆重要節日 或覺得近期財運低落時辦理</p>
+        </article>
+        <article class="faq-item">
+          <h3>可以幫家人補嗎？</h3>
+          <p>可以預約時請填寫祈福人的姓名、生肖、地址與想祈求的內容</p>
+        </article>
+        <article class="faq-item">
+          <h3>公司也可以補財庫嗎？</h3>
+          <p>可以可填寫公司名稱與地址 祈求財源穩定、客源順利、合作圓滿</p>
+        </article>
+        <article class="faq-item">
+          <h3>補財補庫和補運差在哪？</h3>
+          <p>補財補庫偏向財源與財庫；補運偏向整體運勢、卡關轉順與狀態調整</p>
+        </article>
+        <article class="faq-item">
+          <h3>冤親債主是什麼？</h3>
+          <p>民俗上多指因緣牽絆所形成的阻礙 辦理重點在懺悔、回向與祈願化解</p>
+        </article>
+        <article class="faq-item">
+          <h3>是否保證發財或改運？</h3>
+          <p>不保證特定結果祈福是心意與信仰的表達 也建議搭配實際努力與正確決策</p>
+        </article>
+      </div>
+    </section>
     <section class="section" id="order">
       <div class="section-head">
         <div class="section-kicker">線上預約</div>
@@ -2567,6 +2812,18 @@
             <div class="field">
               <label for="name">祈福人姓名</label>
               <input id="name" type="text" placeholder="請輸入姓名">
+            </div>
+            <div class="field">
+              <label for="phone">聯絡電話</label>
+              <input id="phone" type="tel" inputmode="tel" placeholder="請輸入可聯絡電話">
+            </div>
+            <div class="field">
+              <label for="line-id">LINE ID</label>
+              <input id="line-id" type="text" placeholder="方便核對與聯絡">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="可選填">
             </div>
             <div class="field">
               <label for="gender">性別</label>
@@ -2617,6 +2874,13 @@
             <div class="field full">
               <label for="company-address">公司地址（補公司請填）</label>
               <input id="company-address" type="text" placeholder="如需補公司 請輸入公司或店面地址">
+            </div>
+            <div class="field full">
+              <label for="payment-method">付款方式</label>
+              <select id="payment-method">
+                <option>匯款轉帳</option>
+                <option>現場繳費</option>
+              </select>
             </div>
             <div class="field full">
               <label>選擇祈福項目</label>
@@ -2680,41 +2944,30 @@
           <div class="notice">
             民俗科儀屬於信仰祈福與心意表達 並非保證特定結果；也建議搭配自身努力、理財規劃與正向行動
           </div>
+          <div class="payment-card" aria-label="匯款資料">
+            <h4>匯款資料</h4>
+            <div class="payment-row">
+              <span>銀行</span>
+              <strong>中國信託銀行 中台南分行</strong>
+            </div>
+            <div class="payment-row">
+              <span>銀行代號</span>
+              <strong>822</strong>
+            </div>
+            <div class="payment-row">
+              <span>帳號</span>
+              <strong id="bank-account">104540167516</strong>
+            </div>
+            <div class="payment-row">
+              <span>戶名</span>
+              <strong>林韻媃</strong>
+            </div>
+            <div class="payment-actions">
+              <button class="btn btn-secondary" type="button" id="copy-account">複製匯款帳號</button>
+              <button class="btn btn-primary" type="button" id="paid-line-summary">匯款後 LINE 通知</button>
+            </div>
+          </div>
         </aside>
-      </div>
-    </section>
-
-    <section class="section alt" id="faq">
-      <div class="section-head">
-        <div class="section-kicker">常見問題</div>
-        <h2>常見疑問</h2>
-      </div>
-
-      <div class="faq-grid">
-        <article class="faq-item">
-          <h3>多久補一次比較好？</h3>
-          <p>可依個人信仰與需求安排 常見做法是新年、生日、農曆重要節日 或覺得近期財運低落時辦理</p>
-        </article>
-        <article class="faq-item">
-          <h3>可以幫家人補嗎？</h3>
-          <p>可以預約時請填寫祈福人的姓名、生肖、地址與想祈求的內容</p>
-        </article>
-        <article class="faq-item">
-          <h3>公司也可以補財庫嗎？</h3>
-          <p>可以可填寫公司名稱與地址 祈求財源穩定、客源順利、合作圓滿</p>
-        </article>
-        <article class="faq-item">
-          <h3>補財補庫和補運差在哪？</h3>
-          <p>補財補庫偏向財源與財庫；補運偏向整體運勢、卡關轉順與狀態調整</p>
-        </article>
-        <article class="faq-item">
-          <h3>冤親債主是什麼？</h3>
-          <p>民俗上多指因緣牽絆所形成的阻礙 辦理重點在懺悔、回向與祈願化解</p>
-        </article>
-        <article class="faq-item">
-          <h3>是否保證發財或改運？</h3>
-          <p>不保證特定結果祈福是心意與信仰的表達 也建議搭配實際努力與正確決策</p>
-        </article>
       </div>
     </section>
   </main>
@@ -2722,25 +2975,83 @@
   <footer class="footer">
     <p>昌久貹｜補財補庫祈福預約</p>
     <p>願以誠心祈福 為自己、家人與公司行號送上一份安定祝願</p>
+    <div class="footer-socials" aria-label="社群連結">
+      <a class="footer-social ig" href="#" data-social-link="instagram">Instagram</a>
+      <a class="footer-social fb" href="#" data-social-link="facebook">Facebook</a>
+      <a class="footer-social line" href="#" data-line-contact>聯絡我</a>
+    </div>
   </footer>
 
   <a class="btn btn-primary mobile-cta" href="#order">我要預約祈福</a>
+  <a class="line-float" href="#" data-line-contact><span>LINE</span>聯絡我</a>
+
+  <div class="order-modal" id="order-complete-modal" role="dialog" aria-modal="true" aria-labelledby="order-complete-title">
+    <div class="order-dialog">
+      <h3 id="order-complete-title">訂單完成</h3>
+      <p>已整理好你的預約資料 請依匯款資料完成付款 匯款後可點下方按鈕開啟 LINE 通知</p>
+      <div class="order-complete-summary" id="order-complete-summary"></div>
+      <div class="payment-card">
+        <h4>匯款資料</h4>
+        <div class="payment-row">
+          <span>銀行</span>
+          <strong>中國信託銀行 中台南分行</strong>
+        </div>
+        <div class="payment-row">
+          <span>銀行代號</span>
+          <strong>822</strong>
+        </div>
+        <div class="payment-row">
+          <span>帳號</span>
+          <strong>104540167516</strong>
+        </div>
+        <div class="payment-row">
+          <span>戶名</span>
+          <strong>林韻媃</strong>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" type="button" id="close-order-modal">先關閉</button>
+        <button class="btn btn-primary" type="button" id="paid-line-modal">我已匯款 通知 LINE</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const money = new Intl.NumberFormat("zh-TW");
+    const OFFICIAL_LINE_URL = "https://lin.ee/Npcg5cV1";
+    const OFFICIAL_LINE_MESSAGE_URL = "";
+    const INSTAGRAM_URL = "https://www.instagram.com/jiusheng_2023?igsh=MTlmb3V0ODl6eGd4MQ%3D%3D&utm_source=qr";
+    const FACEBOOK_URL = "https://www.facebook.com/share/17SfAoyn6m/?mibextid=wwXIfr";
+    const ORDER_API_URL = "https://chang-jiu-sheng-order-backend-ptmp.vercel.app/api/order";
+    const BANK_ACCOUNT = "104540167516";
     const nameInput = document.querySelector("#name");
+    const phoneInput = document.querySelector("#phone");
+    const lineIdInput = document.querySelector("#line-id");
+    const emailInput = document.querySelector("#email");
     const genderInput = document.querySelector("#gender");
     const zodiacInput = document.querySelector("#zodiac");
     const birthYearInput = document.querySelector("#birth-year");
     const birthMonthInput = document.querySelector("#birth-month");
     const birthDayInput = document.querySelector("#birth-day");
+    const addressInput = document.querySelector("#address");
+    const companyInput = document.querySelector("#company");
+    const companyAddressInput = document.querySelector("#company-address");
+    const paymentMethodInput = document.querySelector("#payment-method");
+    const noteInput = document.querySelector("#note");
     const checks = [...document.querySelectorAll("#choices input[type='checkbox']")];
     const submitDemo = document.querySelector("#submit-demo");
     const mobileCta = document.querySelector(".mobile-cta");
+    const copyAccountBtn = document.querySelector("#copy-account");
+    const paidLineSummary = document.querySelector("#paid-line-summary");
+    const paidLineModal = document.querySelector("#paid-line-modal");
+    const completeModal = document.querySelector("#order-complete-modal");
+    const completeSummary = document.querySelector("#order-complete-summary");
+    const closeOrderModal = document.querySelector("#close-order-modal");
     const guideChecks = [...document.querySelectorAll("#situation-list input[type='checkbox']")];
     const guideTitle = document.querySelector("#guide-title");
     const guideReason = document.querySelector("#guide-reason");
     const guideTags = document.querySelector("#guide-tags");
+    let lastSubmittedOrder = null;
 
     const guideServices = {
       bufu: {
@@ -2761,18 +3072,150 @@
       }
     };
 
-    function refreshSummary() {
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+      }
+
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+      return Promise.resolve();
+    }
+
+    function openLine(message) {
+      if (OFFICIAL_LINE_MESSAGE_URL) {
+        window.open(`${OFFICIAL_LINE_MESSAGE_URL}${encodeURIComponent(message)}`, "_blank", "noopener");
+        return;
+      }
+
+      if (OFFICIAL_LINE_URL) {
+        window.open(OFFICIAL_LINE_URL, "_blank", "noopener");
+        return;
+      }
+
+      alert("請先把官方 LINE 連結放進程式碼 才能直接導到你的官方 LINE");
+    }
+
+    function createOrderId() {
+      const date = new Date();
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      const random = Math.floor(1000 + Math.random() * 9000);
+      return `CJS-${y}${m}${d}-${random}`;
+    }
+
+    function selectedOrder() {
       const selected = checks.filter(item => item.checked);
       const total = selected.reduce((sum, item) => sum + Number(item.value), 0);
       const labels = selected.map(item => item.dataset.name);
       const birth = [birthYearInput.value.trim(), birthMonthInput.value.trim(), birthDayInput.value.trim()].filter(Boolean).join(" ");
 
-      document.querySelector("#sum-name").textContent = nameInput.value.trim() || "尚未填寫";
-      document.querySelector("#sum-gender").textContent = genderInput.value || "尚未選擇";
-      document.querySelector("#sum-birth").textContent = birth || "尚未填寫";
-      document.querySelector("#sum-zodiac").textContent = zodiacInput.value || "尚未選擇";
-      document.querySelector("#sum-items").textContent = labels.length ? labels.join("、") : "尚未選擇";
-      document.querySelector("#sum-total").textContent = `NT$ ${money.format(total)}`;
+      return {
+        selected,
+        total,
+        labels,
+        birth,
+        name: nameInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        lineId: lineIdInput.value.trim(),
+        email: emailInput.value.trim(),
+        gender: genderInput.value,
+        zodiac: zodiacInput.value,
+        address: addressInput.value.trim(),
+        company: companyInput.value.trim(),
+        companyAddress: companyAddressInput.value.trim(),
+        paymentMethod: paymentMethodInput.value,
+        note: noteInput.value.trim()
+      };
+    }
+
+    function buildOrderMessage(prefix = "補財補庫預約資料", order = lastSubmittedOrder || selectedOrder()) {
+      return [
+        prefix,
+        order.orderId ? `訂單編號：${order.orderId}` : "",
+        `姓名：${order.name || "未填"}`,
+        order.phone ? `電話：${order.phone}` : "",
+        order.lineId ? `LINE：${order.lineId}` : "",
+        order.email ? `Email：${order.email}` : "",
+        `性別：${order.gender || "未選擇"}`,
+        `農曆生日：${order.birth || "未填"}`,
+        `生肖：${order.zodiac || "未選擇"}`,
+        `項目：${order.labels.length ? order.labels.join("、") : "未選擇"}`,
+        `金額：NT$ ${money.format(order.total)}`,
+        `付款：${order.paymentMethod || "未選擇"}`,
+        order.address ? `住家地址：${order.address}` : "",
+        order.company ? `公司行號：${order.company}` : "",
+        order.companyAddress ? `公司地址：${order.companyAddress}` : "",
+        order.note ? `備註：${order.note}` : ""
+      ].filter(Boolean).join("\n");
+    }
+
+    function showOrderComplete(order, statusText = "") {
+      completeSummary.textContent = [buildOrderMessage("訂單完成", order), statusText].filter(Boolean).join("\n\n");
+      completeModal.classList.add("visible");
+    }
+
+    function buildOrderPayload(order) {
+      return {
+        type: "order",
+        orderId: order.orderId,
+        createdAt: order.createdAt,
+        name: order.name,
+        phone: order.phone,
+        lineId: order.lineId,
+        email: order.email,
+        gender: order.gender,
+        lunarBirth: order.birth,
+        zodiac: order.zodiac,
+        items: order.labels,
+        total: order.total,
+        paymentMethod: order.paymentMethod,
+        address: order.address,
+        company: order.company,
+        companyAddress: order.companyAddress,
+        note: order.note
+      };
+    }
+
+    async function submitOrderToBackend(order) {
+      if (!ORDER_API_URL) {
+        return { configured: false };
+      }
+
+      await fetch(ORDER_API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(buildOrderPayload(order))
+      });
+
+      return { configured: true };
+    }
+
+    function notifyPaid() {
+      const message = `${buildOrderMessage("我已匯款 請協助核對", lastSubmittedOrder || selectedOrder())}\n匯款帳號後五碼：請填寫`;
+      copyText(message).then(() => {
+        openLine(message);
+      });
+    }
+
+    function refreshSummary() {
+      const order = selectedOrder();
+
+      document.querySelector("#sum-name").textContent = order.name || "尚未填寫";
+      document.querySelector("#sum-gender").textContent = order.gender || "尚未選擇";
+      document.querySelector("#sum-birth").textContent = order.birth || "尚未填寫";
+      document.querySelector("#sum-zodiac").textContent = order.zodiac || "尚未選擇";
+      document.querySelector("#sum-items").textContent = order.labels.length ? order.labels.join("、") : "尚未選擇";
+      document.querySelector("#sum-total").textContent = `NT$ ${money.format(order.total)}`;
     }
 
     function refreshGuide() {
@@ -2809,7 +3252,7 @@
       guideTags.innerHTML = names.map(name => `<span>${name}</span>`).join("");
     }
 
-    [nameInput, genderInput, zodiacInput, birthYearInput, birthMonthInput, birthDayInput, ...checks].forEach(item => {
+    [nameInput, phoneInput, lineIdInput, emailInput, genderInput, zodiacInput, birthYearInput, birthMonthInput, birthDayInput, addressInput, companyInput, companyAddressInput, paymentMethodInput, noteInput, ...checks].forEach(item => {
       item.addEventListener("input", refreshSummary);
       item.addEventListener("change", refreshSummary);
     });
@@ -2818,11 +3261,17 @@
       item.addEventListener("change", refreshGuide);
     });
 
-    submitDemo.addEventListener("click", () => {
-      const selected = checks.filter(item => item.checked);
+    submitDemo.addEventListener("click", async () => {
+      const order = selectedOrder();
+      const selected = order.selected;
       if (!nameInput.value.trim()) {
         alert("請先填寫祈福人姓名");
         nameInput.focus();
+        return;
+      }
+      if (!phoneInput.value.trim() && !lineIdInput.value.trim()) {
+        alert("請至少填寫聯絡電話或 LINE ID");
+        phoneInput.focus();
         return;
       }
       if (!genderInput.value) {
@@ -2844,7 +3293,65 @@
         alert("請先選擇至少一個祈福項目");
         return;
       }
-      alert("已收到預約資料 請依付款資訊完成匯款 完成後將為您安排祈福");
+
+      order.orderId = createOrderId();
+      order.createdAt = new Date().toLocaleString("zh-TW", { hour12: false });
+      lastSubmittedOrder = order;
+
+      submitDemo.disabled = true;
+      submitDemo.textContent = "送出中";
+
+      try {
+        const result = await submitOrderToBackend(order);
+        const status = result.configured
+          ? "已送出訂單通知 後台會寫入統計表並推送 LINE"
+          : "目前尚未設定自動通知後台 這裡先顯示訂單內容";
+        showOrderComplete(order, status);
+      } catch (error) {
+        showOrderComplete(order, "訂單已整理完成 但自動通知後台暫時沒有連線 請先用 LINE 通知");
+      } finally {
+        submitDemo.disabled = false;
+        submitDemo.textContent = "確認預約";
+      }
+    });
+
+    copyAccountBtn.addEventListener("click", () => {
+      copyText(BANK_ACCOUNT).then(() => alert("已複製匯款帳號"));
+    });
+
+    paidLineSummary.addEventListener("click", notifyPaid);
+    paidLineModal.addEventListener("click", notifyPaid);
+
+    closeOrderModal.addEventListener("click", () => {
+      completeModal.classList.remove("visible");
+    });
+
+    completeModal.addEventListener("click", event => {
+      if (event.target === completeModal) {
+        completeModal.classList.remove("visible");
+      }
+    });
+
+    document.querySelectorAll("[data-line-contact]").forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        openLine("您好 我想詢問補財補庫祈福預約");
+      });
+    });
+
+    document.querySelectorAll("[data-social-link]").forEach(link => {
+      link.addEventListener("click", event => {
+        const type = link.dataset.socialLink;
+        const url = type === "instagram" ? INSTAGRAM_URL : FACEBOOK_URL;
+        if (!url) {
+          event.preventDefault();
+          alert(`請先把${type === "instagram" ? "Instagram" : "Facebook"}連結放進程式碼`);
+          return;
+        }
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener";
+      });
     });
 
     function toggleMobileCta() {
